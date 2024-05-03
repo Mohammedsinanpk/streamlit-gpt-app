@@ -1,8 +1,10 @@
 import streamlit as st
 from openai import OpenAI
-user= OpenAI(api_key="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")
+import os
+gpt_api_key = os.environ.get('GPT_API_key')
+user= OpenAI(api_key=gpt_api_key)
 userrole = "user"
-input_text= st.text_input("try searching something")
+input_text= st.text_input("What would you like to learn more about?")
 button = st.button("search")
 if button:
     response = user.chat.completions.create(
